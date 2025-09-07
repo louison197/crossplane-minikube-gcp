@@ -13,6 +13,8 @@
 
 ## Project File Structure
 
+## 2️⃣ Project File Structure
+
 crossplane-minikube-gcp/
 ├─ provider-gcp.yaml # Crossplane GCP Provider
 ├─ providerconfig-gcp.yaml # GCP ProviderConfig (references credentials)
@@ -20,7 +22,6 @@ crossplane-minikube-gcp/
 ├─ README.md # This file
 ├─ .gitignore # Ignore gcp-creds.json
 └─ gcp-creds.json # Service Account JSON (DO NOT version)
-
 
 - `provider-gcp.yaml` → installs the GCP provider via Crossplane  
 - `providerconfig-gcp.yaml` → configures GCP project and credentials  
