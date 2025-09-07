@@ -3,12 +3,13 @@ kind: ProviderConfig
 metadata:
   name: default
 spec:
-  projectID: crossplane-471321
+  projectID: ${GCP_PROJECT}      # Replace with your GCP project name
   credentials:
     source: Secret
     secretRef:
       namespace: crossplane-system
       name: gcp-credentials
       key: creds.json
+
 
 
