@@ -1,0 +1,10 @@
+https://roozy-io.github.io/idp/templating/crossplane.html
+
+https://medium.com/@williamwarley/a-complete-guide-to-deploy-main-services-in-gcp-with-crossplane-and-templates-bonus-c5b025bac22a
+https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v2.0.1
+
+https://docs.upbound.io/getstarted/
+
+https://www.youtube.com/watch?v=EYNwvfGGbd4
+
+https://www.youtube.com/watch?v=iqc2VAxsH_s
