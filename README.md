@@ -1,6 +1,6 @@
 # 📦 Provisioning GCP with Crossplane on Windows (Minikube + Helm)
 
-## 1️⃣ Prerequisites
+## 1. Prerequisites
 
 * Windows 10/11 + PowerShell
 * Minikube installed and running
@@ -9,7 +9,7 @@
 * gcloud CLI installed and configured
 * Helm installed
 
-## 2️⃣ Project File Structure
+## 2. Project File Structure
 
 ```
 crossplane-minikube-gcp/
@@ -26,7 +26,7 @@ crossplane-minikube-gcp/
 * `resource-bucket.yaml` → defines the bucket to create
 * `gcp-creds.json` → service account key (never commit this file)
 
-## 3️⃣ Ignore the JSON file in Git
+## 3️. Ignore the JSON file in Git
 
 Create a `.gitignore`:
 
@@ -35,7 +35,7 @@ Create a `.gitignore`:
 gcp-creds.json
 ```
 
-## 4️⃣ Install Crossplane via Helm
+## 4️. Install Crossplane via Helm
 
 ```powershell
 helm repo add crossplane-stable https://charts.crossplane.io/stable
@@ -49,7 +49,7 @@ helm install crossplane --namespace crossplane-system crossplane-stable/crosspla
 kubectl get pods -n crossplane-system
 ```
 
-## 5️⃣ Create a GCP Service Account
+## 5️. Create a GCP Service Account
 
 * In GCP Console → IAM & Admin → Service Accounts → Create Service Account
 * Assign Storage Admin role
@@ -57,7 +57,7 @@ kubectl get pods -n crossplane-system
 * Check `projectID` in the JSON
 * **Do not version this file**
 
-## 6️⃣ Create Kubernetes Secret
+## 6️. Create Kubernetes Secret
 
 ```powershell
 kubectl create secret generic gcp-credentials `
@@ -65,7 +65,7 @@ kubectl create secret generic gcp-credentials `
   --from-file=creds.json=C:\path\to\gcp-creds.json
 ```
 
-## 7️⃣ Create the GCP ProviderConfig
+## 7️. Create the GCP ProviderConfig
 
 Set environment variable in PowerShell:
 
@@ -79,28 +79,28 @@ Apply the ProviderConfig:
 kubectl apply -f providerconfig-gcp.yaml -n crossplane-system
 ```
 
-## 8️⃣ Install the GCP Provider
+## 8️. Install the GCP Provider
 
 ```powershell
 kubectl apply -f provider-gcp.yaml -n crossplane-system
 kubectl get providers.pkg.crossplane.io -n crossplane-system
 ```
 
-## 9️⃣ Create a GCP Bucket
+## 9️. Create a GCP Bucket
 
 ```powershell
 kubectl apply -f resource-bucket.yaml
 kubectl get buckets
 ```
 
-## 🔟 Verify the bucket in GCP
+## 10. Verify the bucket in GCP
 
 ```powershell
 gcloud auth activate-service-account --key-file="C:\path\to\gcp-creds.json"
 gcloud storage buckets list
 ```
 
-## 1️⃣1️⃣ Cleanup
+## 1️1. Cleanup
 
 ```powershell
 kubectl delete bucket crossplanebucket
